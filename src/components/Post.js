@@ -58,9 +58,11 @@ class Post extends React.Component {
             }
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                window.location.reload();
+            })
             .catch(error => console.log(error))
-        window.location.reload();
     }
 
 }
