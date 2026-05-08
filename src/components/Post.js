@@ -57,7 +57,10 @@ class Post extends React.Component {
                 'Content-Type': 'application/json'
             }
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error(`Delete failed: ${response.status}`);
+                window.location.reload();
+            })
             .then(data => {
                 console.log(data);
                 window.location.reload();
