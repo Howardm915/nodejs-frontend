@@ -11,6 +11,16 @@ app.get('/', (req, res) => {
 })
 
 
+app.get('/env-configs.js', (req, res) => {                                                                                                                                 
+      res.type('application/javascript');
+      res.send(                                                                                                                                                              
+          `window.env = ${JSON.stringify({
+              COMPONENT_BACKEND_URL: process.env.COMPONENT_BACKEND_URL || '',
+              // add whatever other vars the React app reads from window.env                                                                                                 
+          })};`                               
+      );                                                                                                                                                                     
+  });        
+
 setupProxy(app);
 
 
